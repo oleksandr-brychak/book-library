@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1215ad6-956f-4715-843c-f3cdee658bbc" name="Changes" comment="Add Service test and app with base scenario">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/library/repository/InMemoryInventoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/library/service/LibraryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/library/domain/BookTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/library/repository/InMemoryInventoryRepositoryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/library/repository/InventoryConcurrencyTest.java" afterDir="false" />
+    <list default="true" id="c1215ad6-956f-4715-843c-f3cdee658bbc" name="Changes" comment="Add Readme">
       <change afterPath="$PROJECT_DIR$/target/classes/com/example/library/app/App.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/com/example/library/domain/Book.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/com/example/library/domain/BookAvailability.class" afterDir="false" />
@@ -22,15 +14,8 @@
       <change afterPath="$PROJECT_DIR$/target/classes/com/example/library/repository/InventoryRepository.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/com/example/library/service/Library.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/com/example/library/service/LibraryService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/example/library/domain/BookTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/example/library/repository/InMemoryInventoryRepositoryTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/example/library/repository/InventoryConcurrencyTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/example/library/service/LibraryServiceTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/library/repository/InventoryItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/library/repository/InventoryItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/library/repository/InventoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/library/repository/InventoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/library/service/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/library/service/Library.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/library/service/LibraryServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/library/service/LibraryServiceTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,10 +32,15 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.App.executor": "Run",
+    "JUnit.All in book-library.executor": "Run",
+    "JUnit.LibraryServiceTest.executor": "Run",
+    "JUnit.LibraryServiceTest.findsByAuthorTitleAndIsbn.executor": "Run",
+    "JUnit.com.example in book-library.executor": "Run",
     "git-widget-placeholder": "main"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.InventoryConcurrencyTest.concurrentBorrowDoesNotExceedAvailableCopies">
+  <component name="RunManager" selected="JUnit.com.example in book-library">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.library.app.App" />
       <module name="book-library" />
@@ -64,18 +54,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InventoryConcurrencyTest.concurrentBorrowDoesNotExceedAvailableCopies" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="All in book-library" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="book-library" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LibraryServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="book-library" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.library.repository.*" />
+          <option name="PATTERN" value="com.example.library.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.library.repository" />
-      <option name="MAIN_CLASS_NAME" value="com.example.library.repository.InventoryConcurrencyTest" />
-      <option name="METHOD_NAME" value="concurrentBorrowDoesNotExceedAvailableCopies" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="com.example.library.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.library.service.LibraryServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -96,13 +93,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="com.example in book-library" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="book-library" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.LibraryServiceTest.findsByAuthorTitleAndIsbn" />
-        <item itemvalue="JUnit.InventoryConcurrencyTest.concurrentBorrowDoesNotExceedAvailableCopies" />
+        <item itemvalue="JUnit.com.example in book-library" />
+        <item itemvalue="JUnit.All in book-library" />
+        <item itemvalue="JUnit.LibraryServiceTest" />
         <item itemvalue="Application.App" />
         <item itemvalue="JUnit.LibraryServiceTest.findsByAuthorTitleAndIsbn" />
-        <item itemvalue="JUnit.InventoryConcurrencyTest.concurrentBorrowDoesNotExceedAvailableCopies" />
       </list>
     </recent_temporary>
   </component>
@@ -131,7 +142,71 @@
       <option name="project" value="LOCAL" />
       <updated>1770478996552</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add Service and repository">
+      <option name="closed" value="true" />
+      <created>1770483968076</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1770483968076</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add Service and repository">
+      <option name="closed" value="true" />
+      <created>1770484027398</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1770484027398</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add Service and repository">
+      <option name="closed" value="true" />
+      <created>1770484439474</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1770484439474</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add Service and repository">
+      <option name="closed" value="true" />
+      <created>1770484537247</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1770484537247</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Add InMemoryInventoryRepositoryTest, InventoryConcurrencyTest and BookTest tests">
+      <option name="closed" value="true" />
+      <created>1770499060780</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1770499060780</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Add Readme">
+      <option name="closed" value="true" />
+      <created>1770499800308</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1770499800308</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Add Readme">
+      <option name="closed" value="true" />
+      <created>1770499885082</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1770499885082</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add Readme">
+      <option name="closed" value="true" />
+      <created>1770543960352</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1770543960352</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -149,7 +224,11 @@
     <MESSAGE value="Add Library interface and Dto" />
     <MESSAGE value="Add Repository interface and Dto" />
     <MESSAGE value="Add Service test and app with base scenario" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Service test and app with base scenario" />
+    <MESSAGE value="Add Service and repository" />
+    <MESSAGE value="Add InMemoryInventoryRepositoryTest, InventoryConcurrencyTest and BookTest tests" />
+    <MESSAGE value="Add remainingByIsbn, remainingByTitle, remainingByAuthor, Readme.md" />
+    <MESSAGE value="Add Readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Readme" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

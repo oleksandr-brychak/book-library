@@ -5,6 +5,7 @@ import com.example.library.domain.BookAvailability;
 import com.example.library.domain.BookType;
 import com.example.library.repository.InventoryItem;
 import com.example.library.repository.InventoryRepository;
+import com.example.library.util.LibraryUtils;
 
 import java.util.NoSuchElementException;
 import java.util.Objects;
@@ -30,7 +31,7 @@ public class LibraryService implements Library {
 
     @Override
     public Set<BookAvailability> findByAuthor(String author) {
-        if (author == null || author.isBlank()) return Set.of();
+        if (LibraryUtils.isBlank(author)) return Set.of();
 
         return repository.findByAuthor(author)
                 .map(items -> items.stream()
@@ -41,7 +42,7 @@ public class LibraryService implements Library {
 
     @Override
     public Set<BookAvailability> findByTitle(String title) {
-        if (title == null || title.isBlank()) return Set.of();
+        if (LibraryUtils.isBlank(title)) return Set.of();
 
         return repository.findByTitle(title)
                 .map(items -> items.stream()
@@ -52,7 +53,7 @@ public class LibraryService implements Library {
 
     @Override
     public BookAvailability findByIsbn(String isbn) {
-        if (isbn == null || isbn.isBlank()) {
+        if (LibraryUtils.isBlank(isbn)) {
             throw new IllegalArgumentException("isbn must be provided");
         }
         return repository.findByIsbn(isbn)
@@ -62,7 +63,7 @@ public class LibraryService implements Library {
 
     @Override
     public boolean canBorrow(String isbn) {
-        if (isbn == null || isbn.isBlank()) return false;
+        if (LibraryUtils.isBlank(isbn)) return false;
 
         return repository.findByIsbn(isbn)
                 .filter(item -> item.book().type() != BookType.REFERENCE)
@@ -72,20 +73,6 @@ public class LibraryService implements Library {
 
     @Override
     public boolean borrow(String isbn) {
-        if (isbn == null || isbn.isBlank()) {
-            return false;
-        }
-        Optional<InventoryItem> itemOptional = repository.findByIsbn(isbn);
-        if (itemOptional.isEmpty()) {
-            return false;
-        }
-        InventoryItem item = itemOptional.get();
-        if (item.book().type() == BookType.REFERENCE) {
-            return false;
-        }
-        if (item.availableCopies() <= 0) {
-            return false;
-        }
         return repository.borrow(isbn);
     }
 
@@ -94,6 +81,36 @@ public class LibraryService implements Library {
         return repository.findAll().stream()
                 .mapToInt(InventoryItem::borrowedCopies)
                 .sum();
+    }
+
+    @Override
+    public int remainingByIsbn(String isbn) {
+        if (LibraryUtils.isBlank(isbn)) {
+            return 0;
+        }
+        return repository.findByIsbn(isbn)
+                .map(InventoryItem::availableCopies)
+                .orElse(0);
+    }
+
+    @Override
+    public int remainingByTitle(String title) {
+        if (LibraryUtils.isBlank(title)) {
+            return 0;
+        }
+        return repository.findByTitle(title)
+                .map(items -> items.stream().mapToInt(InventoryItem::availableCopies).sum())
+                .orElse(0);
+    }
+
+    @Override
+    public int remainingByAuthor(String author) {
+        if (LibraryUtils.isBlank(author)) {
+            return 0;
+        }
+        return repository.findByAuthor(author)
+                .map(items -> items.stream().mapToInt(InventoryItem::availableCopies).sum())
+                .orElse(0);
     }
 
 }

@@ -32,6 +32,9 @@ public class App {
         System.out.println("Borrow The Odyssey: " + library.borrow("9780140449136"));
         System.out.println("Borrow Reference Book: " + library.borrow("9780199535569"));
         System.out.println("Total borrowed: " + library.totalBorrowedCount());
+        System.out.println("Remaining by ISBN (The Odyssey): " + library.remainingByIsbn("9780140449136"));
+        System.out.println("Remaining by Title (The Iliad): " + library.remainingByTitle("The Iliad"));
+        System.out.println("Remaining by Author (Homer): " + library.remainingByAuthor("Homer"));
 
         BookAvailability availability = library.findByIsbn("9780140449136");
         System.out.println("By ISBN: " + availability.book().title() + " available " + availability.availableCopies());

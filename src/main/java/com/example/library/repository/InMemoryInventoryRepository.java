@@ -1,6 +1,7 @@
 package com.example.library.repository;
 
 import com.example.library.domain.Book;
+import com.example.library.util.LibraryUtils;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -33,7 +34,7 @@ public class InMemoryInventoryRepository implements InventoryRepository {
         if (copies <= 0) {
             throw new IllegalArgumentException("copies must be positive");
         }
-        String isbn = requireNonBlank(book.isbn(), "isbn");
+        String isbn = LibraryUtils.requireNonBlank(book.isbn(), "isbn");
 
         InventoryItem created = new InventoryItem(book, copies);
         InventoryItem existing = inventoryByIsbn.putIfAbsent(isbn, created);
@@ -51,7 +52,7 @@ public class InMemoryInventoryRepository implements InventoryRepository {
 
     @Override
     public Optional<InventoryItem> findByIsbn(String isbn) {
-        if (isbn == null || isbn.isBlank()) return Optional.empty();
+        if (LibraryUtils.isBlank(isbn)) return Optional.empty();
         return Optional.ofNullable(inventoryByIsbn.get(isbn));
     }
 
@@ -60,7 +61,7 @@ public class InMemoryInventoryRepository implements InventoryRepository {
      */
     @Override
     public boolean borrow(String isbn) {
-        if (isbn == null || isbn.isBlank()) return false;
+        if (LibraryUtils.isBlank(isbn)) return false;
         InventoryItem item = inventoryByIsbn.get(isbn);
         return item != null && item.tryBorrowOne();
     }
@@ -68,7 +69,7 @@ public class InMemoryInventoryRepository implements InventoryRepository {
     @Override
     public Optional<Set<InventoryItem>> findByAuthor(String author) {
         requireNonNull(author, "author must be provided");
-        String normalized = normalize(author);
+        String normalized = LibraryUtils.normalizeLower(author);
         Set<InventoryItem> exactMatches = authorIndex.get(normalized);
         if (exactMatches == null || exactMatches.isEmpty()) {
             return Optional.empty();
@@ -78,7 +79,7 @@ public class InMemoryInventoryRepository implements InventoryRepository {
 
     @Override
     public Optional<Set<InventoryItem>> findByTitle(String titleQuery) {
-        String normalized = normalize(titleQuery);
+        String normalized = LibraryUtils.normalizeLower(titleQuery);
         Set<InventoryItem> exactMatches = titleIndex.get(normalized);
         if (exactMatches == null || exactMatches.isEmpty()) {
             return Optional.empty();
@@ -92,19 +93,10 @@ public class InMemoryInventoryRepository implements InventoryRepository {
     }
 
     private synchronized void indexExact(ConcurrentMap<String, Set<InventoryItem>> index, String value, InventoryItem item) {
-        String normalized = normalize(value);
-        if (normalized.isBlank()) {
+        String normalized = LibraryUtils.normalizeLower(value);
+        if (LibraryUtils.isBlank(normalized)) {
             return;
         }
         index.computeIfAbsent(normalized, k -> ConcurrentHashMap.newKeySet()).add(item);
-    }
-
-    private String normalize(String input) {
-        return input == null ? "" : input.toLowerCase(Locale.ROOT);
-    }
-
-    private static String requireNonBlank(String s, String name) {
-        if (s == null || s.isBlank()) throw new IllegalArgumentException(name + " must be provided");
-        return s;
     }
 }

@@ -19,5 +19,11 @@ public interface Library {
 
     boolean borrow(String isbn);
 
+    int remainingByIsbn(String isbn);
+
+    int remainingByTitle(String title);
+
+    int remainingByAuthor(String author);
+
     int totalBorrowedCount();
 }
