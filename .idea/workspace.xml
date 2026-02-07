@@ -4,7 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1215ad6-956f-4715-843c-f3cdee658bbc" name="Changes" comment="" />
+    <list default="true" id="c1215ad6-956f-4715-843c-f3cdee658bbc" name="Changes" comment="Add Service test and app with base scenario">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/library/repository/InMemoryInventoryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/library/service/LibraryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/library/domain/BookTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/library/repository/InMemoryInventoryRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/library/repository/InventoryConcurrencyTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/library/app/App.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/library/domain/Book.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/library/domain/BookAvailability.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/library/domain/BookType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/library/repository/InMemoryInventoryRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/library/repository/InventoryItem.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/library/repository/InventoryRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/library/service/Library.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/library/service/LibraryService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/example/library/domain/BookTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/example/library/repository/InMemoryInventoryRepositoryTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/example/library/repository/InventoryConcurrencyTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/example/library/service/LibraryServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/library/repository/InventoryItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/library/repository/InventoryItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/library/repository/InventoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/library/repository/InventoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/library/service/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/library/service/Library.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +47,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "git-widget-placeholder": "backup-before-split"
+    "git-widget-placeholder": "main"
   }
 }]]></component>
   <component name="RunManager" selected="JUnit.InventoryConcurrencyTest.concurrentBorrowDoesNotExceedAvailableCopies">
@@ -74,18 +101,62 @@
         <item itemvalue="JUnit.LibraryServiceTest.findsByAuthorTitleAndIsbn" />
         <item itemvalue="JUnit.InventoryConcurrencyTest.concurrentBorrowDoesNotExceedAvailableCopies" />
         <item itemvalue="Application.App" />
+        <item itemvalue="JUnit.LibraryServiceTest.findsByAuthorTitleAndIsbn" />
+        <item itemvalue="JUnit.InventoryConcurrencyTest.concurrentBorrowDoesNotExceedAvailableCopies" />
       </list>
     </recent_temporary>
   </component>
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="Add Library interface and Dto">
+      <option name="closed" value="true" />
+      <created>1770475485839</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1770475485839</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add Repository interface and Dto">
+      <option name="closed" value="true" />
+      <created>1770476614928</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1770476614928</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add Service test and app with base scenario">
+      <option name="closed" value="true" />
+      <created>1770478996552</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1770478996552</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add Library interface and Dto" />
+    <MESSAGE value="Add Repository interface and Dto" />
+    <MESSAGE value="Add Service test and app with base scenario" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Service test and app with base scenario" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/library/repository/InventoryRepository.java</url>
-          <line>13</line>
+          <line>11</line>
           <properties class="com.example.library.repository.InventoryRepository" method="findByAuthor">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -94,7 +165,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/library/repository/InventoryRepository.java</url>
-          <line>11</line>
+          <line>9</line>
           <properties class="com.example.library.repository.InventoryRepository" method="addBook">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

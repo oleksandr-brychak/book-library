@@ -4,15 +4,16 @@ import com.example.library.domain.Book;
 import com.example.library.domain.BookAvailability;
 
 import java.util.Optional;
+import java.util.Set;
 
 public interface Library {
     void addBook(Book book, int copies);
 
-    Optional<BookAvailability> findByAuthor(String authorQuery);
+    Set<BookAvailability> findByAuthor(String authorQuery);
 
-    Optional<BookAvailability> findByTitle(String titleQuery);
+    Set<BookAvailability>  findByTitle(String titleQuery);
 
-    Optional<BookAvailability> findByIsbn(String isbn);
+    BookAvailability findByIsbn(String isbn);
 
     boolean canBorrow(String isbn);
 

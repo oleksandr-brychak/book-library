@@ -17,20 +17,15 @@ class LibraryServiceTest {
         library.addBook(odyssey, 2);
         library.addBook(iliad, 1);
 
-        assertThat(library.findByAuthor("homer"))
-                .isPresent()
-                .get()
-                .extracting(availability -> availability.book().author())
-                .isEqualTo("Homer");
+        assertThat(library.findByAuthor("Homer"))
+                .extracting(availability -> availability.book().title())
+                .containsExactlyInAnyOrder("The Odyssey", "The Iliad");
 
-        assertThat(library.findByTitle("Odyssey"))
-                .isPresent()
-                .get()
+        assertThat(library.findByTitle("The Odyssey"))
                 .extracting(availability -> availability.book().isbn())
-                .isEqualTo("9780140449136");
+                .containsExactly("9780140449136");
 
         assertThat(library.findByIsbn("9780140449181"))
-                .get()
                 .extracting(availability -> availability.book().author())
                 .isEqualTo("Homer");
     }
