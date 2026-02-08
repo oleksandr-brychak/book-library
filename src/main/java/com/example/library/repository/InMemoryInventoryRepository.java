@@ -1,7 +1,6 @@
 package com.example.library.repository;
 
 import com.example.library.domain.Book;
-import com.example.library.domain.BookType;
 import com.example.library.util.LibraryUtils;
 
 import java.util.HashMap;
@@ -12,6 +11,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.TreeMap;
 
+import static com.example.library.domain.BookType.REFERENCE;
 import static com.example.library.util.LibraryUtils.isBlank;
 import static java.util.Objects.requireNonNull;
 import static java.util.Optional.empty;
@@ -68,13 +68,13 @@ public class InMemoryInventoryRepository implements InventoryRepository {
      * Indexes reference ISBNs, so borrow updates are reflected without reindexing.
      */
     @Override
-    public synchronized boolean borrow(String isbn) {
+    public synchronized boolean tryBorrow(String isbn) {
         if (isBlank(isbn)) return false;
         InventoryItem item = inventoryByIsbn.get(isbn);
         if (item == null) {
             return false;
         }
-        if (item.book().type() == BookType.REFERENCE) {
+        if (item.book().type() == REFERENCE) {
             return false;
         }
         return item.borrowOne()

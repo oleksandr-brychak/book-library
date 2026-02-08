@@ -34,7 +34,7 @@ public interface InventoryRepository {
     /**
      * Attempts to borrow one copy by ISBN.
      */
-    boolean borrow(String isbn);
+    boolean tryBorrow(String isbn);
 
     /**
      * Total number of borrowed copies across the inventory.

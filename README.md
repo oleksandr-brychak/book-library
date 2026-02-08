@@ -38,3 +38,9 @@ mvn test
 mvn -q -DskipTests compile
 java -cp target/classes com.example.library.app.App
 ```
+
+## Performance Considerations
+For large libraries, consider:
+- Pagination for search results
+- Limiting the number of results returned
+- Caching frequently accessed books

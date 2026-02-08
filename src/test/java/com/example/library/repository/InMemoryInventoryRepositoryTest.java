@@ -40,20 +40,28 @@ class InMemoryInventoryRepositoryTest {
     }
 
     @Test
-    void borrowDoesNotExceedAvailableCopies() {
+    void tryBorrowDoesNotExceedAvailableCopies() {
         InMemoryInventoryRepository repository = new InMemoryInventoryRepository();
         Book odyssey = new Book("9780140449136", "The Odyssey", "Homer", BookType.NORMAL);
 
         repository.addBook(odyssey, 1);
 
-        assertThat(repository.borrow("9780140449136")).isTrue();
-        assertThat(repository.borrow("9780140449136")).isFalse();
+        assertThat(repository.tryBorrow("9780140449136")).isTrue();
+        assertThat(repository.tryBorrow("9780140449136")).isFalse();
 
         assertThat(repository.findByIsbn("9780140449136"))
                 .isPresent()
                 .get()
                 .extracting(InventoryItem::availableCopies)
                 .isEqualTo(0);
+    }
+
+    @Test
+    void tryBorrowReturnsFalseForNullOrBlankIsbn() {
+        InMemoryInventoryRepository repository = new InMemoryInventoryRepository();
+
+        assertThat(repository.tryBorrow(null)).isFalse();
+        assertThat(repository.tryBorrow(" ")).isFalse();
     }
 
     @Test

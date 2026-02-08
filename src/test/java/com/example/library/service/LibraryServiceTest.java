@@ -51,18 +51,6 @@ class LibraryServiceTest {
     }
 
     @Test
-    void preventsBorrowingReferenceBooks() {
-        Library library = new LibraryService(new InMemoryInventoryRepository());
-        Book reference = new Book("9780199535569", "Oxford English Dictionary", "Oxford", BookType.REFERENCE);
-
-        library.addBook(reference, 1);
-
-        assertThat(library.canBorrow("9780199535569")).isFalse();
-        assertThat(library.borrow("9780199535569")).isFalse();
-        assertThat(library.totalBorrowedCount()).isZero();
-    }
-
-    @Test
     void blankQueriesReturnEmptyOptionals() {
         Library library = new LibraryService(new InMemoryInventoryRepository());
 

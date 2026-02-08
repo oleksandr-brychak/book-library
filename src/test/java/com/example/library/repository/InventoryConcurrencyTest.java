@@ -33,7 +33,7 @@ class InventoryConcurrencyTest {
                 try {
                     start.await();
                     for (int j = 0; j < attemptsPerThread; j++) {
-                        if (repository.borrow(odyssey.isbn())) {
+                        if (repository.tryBorrow(odyssey.isbn())) {
                             successes.incrementAndGet();
                         }
                     }
@@ -132,7 +132,7 @@ class InventoryConcurrencyTest {
                 try {
                     start.await();
                     for (int j = 0; j < borrowsPerThread; j++) {
-                        if (repository.borrow(odyssey.isbn())) {
+                        if (repository.tryBorrow(odyssey.isbn())) {
                             borrowSuccesses.incrementAndGet();
                         }
                     }

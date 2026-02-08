@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1215ad6-956f-4715-843c-f3cdee658bbc" name="Changes" comment="Refactor code and add Javadocs">
+    <list default="true" id="c1215ad6-956f-4715-843c-f3cdee658bbc" name="Changes" comment="Add Performance Considerations into README and add minor refactor a bit borrow method">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/library/repository/InMemoryInventoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/library/repository/InMemoryInventoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/library/repository/InventoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/library/repository/InventoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/library/service/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/library/service/Library.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/library/domain/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/library/domain/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/library/service/LibraryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/library/service/LibraryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/library/domain/BookTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/library/domain/BookTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/example/library/repository/InMemoryInventoryRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/library/repository/InMemoryInventoryRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/library/service/LibraryServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/library/service/LibraryServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/library/service/LibraryServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/library/service/LibraryServiceTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -296,7 +295,23 @@
       <option name="project" value="LOCAL" />
       <updated>1770563999927</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Add prefix search">
+      <option name="closed" value="true" />
+      <created>1770572075840</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1770572075840</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Add Performance Considerations into README and add minor refactor a bit borrow method">
+      <option name="closed" value="true" />
+      <created>1770574460503</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1770574460503</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -322,6 +337,8 @@
     <MESSAGE value="add README, extra tests, and owner methods to find remaining books" />
     <MESSAGE value="Add README, extra tests, and owner methods to find remaining books" />
     <MESSAGE value="Refactor code and add Javadocs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor code and add Javadocs" />
+    <MESSAGE value="Add prefix search" />
+    <MESSAGE value="Add Performance Considerations into README and add minor refactor a bit borrow method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Performance Considerations into README and add minor refactor a bit borrow method" />
   </component>
 </project>

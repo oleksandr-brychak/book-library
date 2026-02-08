@@ -2,15 +2,17 @@ package com.example.library.service;
 
 import com.example.library.domain.Book;
 import com.example.library.domain.BookAvailability;
-import com.example.library.domain.BookType;
 import com.example.library.repository.InventoryItem;
 import com.example.library.repository.InventoryRepository;
 import com.example.library.util.LibraryUtils;
 
 import java.util.NoSuchElementException;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import static com.example.library.domain.BookType.REFERENCE;
 
 /**
  * Stateless service layer; thread-safe.
@@ -19,12 +21,12 @@ public class LibraryService implements Library {
     private final InventoryRepository repository;
 
     public LibraryService(InventoryRepository repository) {
-        this.repository = Objects.requireNonNull(repository, "repository");
+        this.repository = Objects.requireNonNull(repository, "repository must be provided");
     }
 
     @Override
     public void addBook(Book book, int copies) {
-        Objects.requireNonNull(book, "book");
+        Objects.requireNonNull(book, "book must be provided");
         if (copies <= 0) {
             throw new IllegalArgumentException("copies must be positive");
         }
@@ -68,7 +70,7 @@ public class LibraryService implements Library {
         if (LibraryUtils.isBlank(isbn)) return false;
 
         return repository.findByIsbn(isbn)
-                .filter(item -> item.book().type() != BookType.REFERENCE)
+                .filter(item -> item.book().type() != REFERENCE)
                 .filter(item -> item.availableCopies() > 0)
                 .isPresent();
     }
@@ -76,7 +78,7 @@ public class LibraryService implements Library {
     @Override
     public boolean borrow(String isbn) {
         if (LibraryUtils.isBlank(isbn)) return false;
-        return repository.borrow(isbn);
+        return repository.tryBorrow(isbn);
     }
 
     @Override
