@@ -7,10 +7,15 @@ import com.example.library.util.LibraryUtils;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.NavigableMap;
 import java.util.Optional;
 import java.util.Set;
+import java.util.TreeMap;
 
+import static com.example.library.util.LibraryUtils.isBlank;
 import static java.util.Objects.requireNonNull;
+import static java.util.Optional.empty;
+import static java.util.Optional.of;
 
 /**
  * Thread-safe in-memory repository. All public operations are synchronized.
@@ -20,13 +25,13 @@ public class InMemoryInventoryRepository implements InventoryRepository {
 
     private final Map<String, InventoryItem> inventoryByIsbn = new HashMap<>();
     /**
-     * Exact-match index of normalized author name to ISBNs.
+     * Author index used for case-insensitive prefix lookups.
      */
-    private final Map<String, Set<String>> authorIndex = new HashMap<>();
+    private final NavigableMap<String, Set<String>> authorIndex = new TreeMap<>();
     /**
-     * Exact-match index of normalized title to ISBNs.
+     * Title index used for case-insensitive prefix lookups.
      */
-    private final Map<String, Set<String>> titleIndex = new HashMap<>();
+    private final NavigableMap<String, Set<String>> titleIndex = new TreeMap<>();
 
     /**
      * Indexes only need updates when new inventory items are created or book metadata changes.
@@ -55,7 +60,7 @@ public class InMemoryInventoryRepository implements InventoryRepository {
 
     @Override
     public synchronized Optional<InventoryItem> findByIsbn(String isbn) {
-        if (LibraryUtils.isBlank(isbn)) return Optional.empty();
+        if (isBlank(isbn)) return empty();
         return Optional.ofNullable(inventoryByIsbn.get(isbn));
     }
 
@@ -64,7 +69,7 @@ public class InMemoryInventoryRepository implements InventoryRepository {
      */
     @Override
     public synchronized boolean borrow(String isbn) {
-        if (LibraryUtils.isBlank(isbn)) return false;
+        if (isBlank(isbn)) return false;
         InventoryItem item = inventoryByIsbn.get(isbn);
         if (item == null) {
             return false;
@@ -83,37 +88,23 @@ public class InMemoryInventoryRepository implements InventoryRepository {
     @Override
     public synchronized Optional<Set<InventoryItem>> findByAuthor(String author) {
         requireNonNull(author, "author must be provided");
-        String normalized = LibraryUtils.normalizeLower(author);
-        Set<String> isbns = authorIndex.get(normalized);
-        if (isbns == null || isbns.isEmpty()) {
-            return Optional.empty();
+        String normalizedAuthor = LibraryUtils.normalizeLower(author);
+        if (isBlank(normalizedAuthor)) {
+            return empty();
         }
-        Set<InventoryItem> items = new HashSet<>();
-        for (String isbn : isbns) {
-            InventoryItem item = inventoryByIsbn.get(isbn);
-            if (item != null) {
-                items.add(item);
-            }
-        }
-        return items.isEmpty() ? Optional.empty() : Optional.of(Set.copyOf(items));
+        Set<InventoryItem> items = findItemsByPrefix(authorIndex, normalizedAuthor);
+        return items.isEmpty() ? empty() : of(items);
     }
 
     @Override
     public synchronized Optional<Set<InventoryItem>> findByTitle(String titleQuery) {
         requireNonNull(titleQuery, "title must be provided");
-        String normalized = LibraryUtils.normalizeLower(titleQuery);
-        Set<String> isbns = titleIndex.get(normalized);
-        if (isbns == null || isbns.isEmpty()) {
-            return Optional.empty();
+        String normalizedTitle = LibraryUtils.normalizeLower(titleQuery);
+        if (isBlank(normalizedTitle)) {
+            return empty();
         }
-        Set<InventoryItem> items = new HashSet<>();
-        for (String isbn : isbns) {
-            InventoryItem item = inventoryByIsbn.get(isbn);
-            if (item != null) {
-                items.add(item);
-            }
-        }
-        return items.isEmpty() ? Optional.empty() : Optional.of(Set.copyOf(items));
+        Set<InventoryItem> items = findItemsByPrefix(titleIndex, normalizedTitle);
+        return items.isEmpty() ? empty() : of(items);
     }
 
     @Override
@@ -125,9 +116,27 @@ public class InMemoryInventoryRepository implements InventoryRepository {
 
     private void indexExact(Map<String, Set<String>> index, String value, String isbn) {
         String normalized = LibraryUtils.normalizeLower(value);
-        if (LibraryUtils.isBlank(normalized)) {
+        if (isBlank(normalized)) {
             return;
         }
         index.computeIfAbsent(normalized, k -> new HashSet<>()).add(isbn);
+    }
+
+    private Set<InventoryItem> findItemsByPrefix(NavigableMap<String, Set<String>> index, String normalized) {
+        NavigableMap<String, Set<String>> range =
+                index.subMap(normalized, true, normalized + Character.MAX_VALUE, true);
+        if (range.isEmpty()) {
+            return Set.of();
+        }
+        Set<InventoryItem> items = new HashSet<>();
+        for (Set<String> isbns : range.values()) {
+            for (String isbn : isbns) {
+                InventoryItem item = inventoryByIsbn.get(isbn);
+                if (item != null) {
+                    items.add(item);
+                }
+            }
+        }
+        return items;
     }
 }

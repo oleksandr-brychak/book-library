@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LibraryServiceTest {
     @Test
-    void findsByAuthorTitleAndIsbn() {
+    void findsByAuthorTitlePrefixAndIsbn() {
         Library library = new LibraryService(new InMemoryInventoryRepository());
         Book odyssey = new Book("9780140449136", "The Odyssey", "Homer", BookType.NORMAL);
         Book iliad = new Book("9780140449181", "The Iliad", "Homer", BookType.NORMAL);
@@ -18,11 +18,11 @@ class LibraryServiceTest {
         library.addBook(odyssey, 2);
         library.addBook(iliad, 1);
 
-        assertThat(library.findByAuthor("Homer"))
+        assertThat(library.findByAuthor("Hom"))
                 .extracting(availability -> availability.book().title())
                 .containsExactlyInAnyOrder("The Odyssey", "The Iliad");
 
-        assertThat(library.findByTitle("The Odyssey"))
+        assertThat(library.findByTitle("the od"))
                 .extracting(availability -> availability.book().isbn())
                 .containsExactly("9780140449136");
 

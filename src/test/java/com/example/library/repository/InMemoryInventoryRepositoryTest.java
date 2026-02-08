@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class InMemoryInventoryRepositoryTest {
     @Test
-    void findsByExactAuthorAndTitleCaseInsensitive() {
+    void findsByAuthorAndTitlePrefixCaseInsensitive() {
         InMemoryInventoryRepository repository = new InMemoryInventoryRepository();
         Book odyssey = new Book("9780140449136", "The Odyssey", "Homer", BookType.NORMAL);
         Book iliad = new Book("9780140449181", "The Iliad", "Homer", BookType.NORMAL);
@@ -17,26 +17,26 @@ class InMemoryInventoryRepositoryTest {
         repository.addBook(odyssey, 2);
         repository.addBook(iliad, 1);
 
-        assertThat(repository.findByAuthor("homer")).isPresent();
-        assertThat(repository.findByAuthor("homer").get())
+        assertThat(repository.findByAuthor("hom")).isPresent();
+        assertThat(repository.findByAuthor("hom").get())
                 .extracting(item -> item.book().title())
                 .containsExactlyInAnyOrder("The Odyssey", "The Iliad");
 
-        assertThat(repository.findByTitle("the odyssey")).isPresent();
-        assertThat(repository.findByTitle("the odyssey").get())
+        assertThat(repository.findByTitle("the od")).isPresent();
+        assertThat(repository.findByTitle("the od").get())
                 .extracting(item -> item.book().isbn())
                 .containsExactly("9780140449136");
     }
 
     @Test
-    void exactMatchingDoesNotReturnSubstrings() {
+    void prefixMatchingDoesNotReturnMiddleSubstrings() {
         InMemoryInventoryRepository repository = new InMemoryInventoryRepository();
         Book odyssey = new Book("9780140449136", "The Odyssey", "Homer", BookType.NORMAL);
 
         repository.addBook(odyssey, 1);
 
-        assertThat(repository.findByAuthor("Hom")).isEmpty();
-        assertThat(repository.findByTitle("Odys")).isEmpty();
+        assertThat(repository.findByAuthor("ome")).isEmpty();
+        assertThat(repository.findByTitle("dys")).isEmpty();
     }
 
     @Test

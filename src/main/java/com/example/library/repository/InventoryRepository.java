@@ -17,12 +17,12 @@ public interface InventoryRepository {
     void addBook(Book book, int copies);
 
     /**
-     * Finds all inventory items for an exact author match (case-insensitive).
+     * Finds all inventory items where author starts with the query (case-insensitive).
      */
     Optional<Set<InventoryItem>> findByAuthor(String authorQuery);
 
     /**
-     * Finds all inventory items for an exact title match (case-insensitive).
+     * Finds all inventory items where title starts with the query (case-insensitive).
      */
     Optional<Set<InventoryItem>> findByTitle(String titleQuery);
 

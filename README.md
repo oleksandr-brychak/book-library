@@ -3,10 +3,10 @@
 Simple library for lending books. Designed as a layered, in-memory example with thread-safe repository operations and a small console demo via `App`.
 
 ## Features
-- Find books by **author** or **title** (exact match, case-insensitive)
+- Find books by **author** or **title** (prefix match, case-insensitive)
 - Find books by **ISBN**
 - Borrow by **ISBN** (reference books cannot be borrowed)
-- Remaining copies by **ISBN**, **title**, or **author**
+- Remaining copies by **ISBN**, or by **title/author** prefix
 - Track total borrowed count
 - In-memory storage with thread-safe operations
 

@@ -16,12 +16,12 @@ public interface Library {
     void addBook(Book book, int copies);
 
     /**
-     * Finds books by exact author match (case-insensitive).
+     * Finds books where author starts with the query (case-insensitive).
      */
     Set<BookAvailability> findByAuthor(String authorQuery);
 
     /**
-     * Finds books by exact title match (case-insensitive).
+     * Finds books where title starts with the query (case-insensitive).
      */
     Set<BookAvailability>  findByTitle(String titleQuery);
 
