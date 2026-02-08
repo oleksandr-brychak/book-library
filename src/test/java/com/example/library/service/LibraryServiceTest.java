@@ -6,6 +6,7 @@ import com.example.library.repository.InMemoryInventoryRepository;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LibraryServiceTest {
     @Test
@@ -67,5 +68,14 @@ class LibraryServiceTest {
 
         assertThat(library.findByAuthor(" ")).isEmpty();
         assertThat(library.findByTitle("")).isEmpty();
+    }
+
+    @Test
+    void findByIsbnRejectsBlankIsbn() {
+        Library library = new LibraryService(new InMemoryInventoryRepository());
+
+        assertThatThrownBy(() -> library.findByIsbn(" "))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("isbn must be provided");
     }
 }

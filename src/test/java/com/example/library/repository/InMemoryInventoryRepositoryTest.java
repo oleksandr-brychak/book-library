@@ -5,6 +5,7 @@ import com.example.library.domain.BookType;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class InMemoryInventoryRepositoryTest {
     @Test
@@ -68,5 +69,47 @@ class InMemoryInventoryRepositoryTest {
                 .get()
                 .extracting(InventoryItem::availableCopies)
                 .isEqualTo(3);
+    }
+
+    @Test
+    void addBookRejectsInvalidInputAndMismatchedIsbn() {
+        InMemoryInventoryRepository repository = new InMemoryInventoryRepository();
+        Book odyssey = new Book("9780140449136", "The Odyssey", "Homer", BookType.NORMAL);
+        Book odysseyAlt = new Book("9780140449136", "Odyssey", "Homer", BookType.NORMAL);
+        Book blankIsbn = new Book(" ", "Some Title", "Author", BookType.NORMAL);
+
+        assertThatThrownBy(() -> repository.addBook(null, 1))
+                .isInstanceOf(NullPointerException.class);
+
+        assertThatThrownBy(() -> repository.addBook(odyssey, 0))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> repository.addBook(blankIsbn, 1))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        repository.addBook(odyssey, 1);
+        assertThatThrownBy(() -> repository.addBook(odysseyAlt, 1))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void findByIsbnReturnsEmptyForBlankInput() {
+        InMemoryInventoryRepository repository = new InMemoryInventoryRepository();
+
+        assertThat(repository.findByIsbn(" ")).isEmpty();
+        assertThat(repository.findByIsbn("")).isEmpty();
+    }
+
+    @Test
+    void findByAuthorAndTitleRejectNull() {
+        InMemoryInventoryRepository repository = new InMemoryInventoryRepository();
+
+        assertThatThrownBy(() -> repository.findByAuthor(null))
+                .isInstanceOf(NullPointerException.class)
+                .hasMessageContaining("author must be provided");
+
+        assertThatThrownBy(() -> repository.findByTitle(null))
+                .isInstanceOf(NullPointerException.class)
+                .hasMessageContaining("title must be provided");
     }
 }

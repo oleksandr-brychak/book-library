@@ -11,7 +11,7 @@ public final class LibraryUtils {
     }
 
     public static String normalizeLower(String value) {
-        return value == null ? "" : value.toLowerCase(Locale.ROOT);
+        return value == null ? "" : value.trim().toLowerCase(Locale.ROOT);
     }
 
     public static String requireNonBlank(String value, String name) {

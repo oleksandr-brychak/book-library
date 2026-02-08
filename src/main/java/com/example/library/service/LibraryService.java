@@ -9,10 +9,12 @@ import com.example.library.util.LibraryUtils;
 
 import java.util.NoSuchElementException;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * Stateless service layer; thread-safe.
+ */
 public class LibraryService implements Library {
     private final InventoryRepository repository;
 
@@ -73,14 +75,13 @@ public class LibraryService implements Library {
 
     @Override
     public boolean borrow(String isbn) {
+        if (LibraryUtils.isBlank(isbn)) return false;
         return repository.borrow(isbn);
     }
 
     @Override
     public int totalBorrowedCount() {
-        return repository.findAll().stream()
-                .mapToInt(InventoryItem::borrowedCopies)
-                .sum();
+        return repository.totalBorrowedCount();
     }
 
     @Override

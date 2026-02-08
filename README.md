@@ -21,6 +21,10 @@ Simple library for lending books. Designed as a layered, in-memory example with 
 - Java 21
 - Maven
 
+## Dependency Versions
+- JUnit Jupiter `5.10.2`
+- AssertJ `3.25.3`
+
 ## Prerequisites (Install)
 - JDK 21 (set `JAVA_HOME` and ensure `java -version` shows 21)
 - Maven (ensure `mvn -version` works)

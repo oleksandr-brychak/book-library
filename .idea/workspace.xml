@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1215ad6-956f-4715-843c-f3cdee658bbc" name="Changes" comment="Add Readme">
+    <list default="true" id="c1215ad6-956f-4715-843c-f3cdee658bbc" name="Changes" comment="Refactor code and add Javadocs">
       <change afterPath="$PROJECT_DIR$/target/classes/com/example/library/app/App.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/com/example/library/domain/Book.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/com/example/library/domain/BookAvailability.class" afterDir="false" />
@@ -14,7 +14,11 @@
       <change afterPath="$PROJECT_DIR$/target/classes/com/example/library/repository/InventoryRepository.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/com/example/library/service/Library.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/com/example/library/service/LibraryService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/library/repository/InMemoryInventoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/library/repository/InMemoryInventoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/library/repository/InMemoryInventoryRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/library/repository/InMemoryInventoryRepositoryTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/library/service/LibraryServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/library/service/LibraryServiceTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,6 +33,10 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="SOFT" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
@@ -40,6 +48,23 @@
     "git-widget-placeholder": "main"
   }
 }]]></component>
+  <component name="QodanaHighlightedReportService">
+    <option name="localRunNotPublishedPersistedInfo">
+      <LocalReportPersistedInfo>
+        <option name="path" value="/private/var/folders/l5/ff852j4d2qlg8nqfwy2gp7dw0000gp/T/qodana_output/qodana.sarif.json" />
+        <option name="reportGuid" value="24e98cb4-b269-4c96-942a-a9850154b2d5" />
+        <option name="reportName" value="book-library/qodana/2026-02-08" />
+      </LocalReportPersistedInfo>
+    </option>
+  </component>
+  <component name="QodanaIsSelectedPersistenceService">
+    <option name="selectedOrLoading" value="true" />
+  </component>
+  <component name="QodanaReportsService">
+    <option name="descriptions">
+      <ReportDescription localRun="true" path="/private/var/folders/l5/ff852j4d2qlg8nqfwy2gp7dw0000gp/T/qodana_output/qodana.sarif.json" reportGuid="24e98cb4-b269-4c96-942a-a9850154b2d5" reportId="book-library/qodana/2026-02-08" />
+    </option>
+  </component>
   <component name="RunManager" selected="JUnit.com.example in book-library">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.library.app.App" />
@@ -206,7 +231,87 @@
       <option name="project" value="LOCAL" />
       <updated>1770543960352</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Add InMemoryInventoryRepositoryTest, InventoryConcurrencyTest and BookTest tests">
+      <option name="closed" value="true" />
+      <created>1770544110184</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1770544110184</updated>
+    </task>
+    <task id="LOCAL-00013" summary="add README, extra tests, and owner methods to find remaining books">
+      <option name="closed" value="true" />
+      <created>1770544360783</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1770544360783</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Add README, extra tests, and owner methods to find remaining books">
+      <option name="closed" value="true" />
+      <created>1770545856615</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1770545856615</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Refactor code and add Javadocs">
+      <option name="closed" value="true" />
+      <created>1770545966932</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1770545966932</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Refactor code and add Javadocs">
+      <option name="closed" value="true" />
+      <created>1770546742799</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1770546742799</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Refactor code and add Javadocs">
+      <option name="closed" value="true" />
+      <created>1770547369714</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1770547369714</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Refactor code and add Javadocs">
+      <option name="closed" value="true" />
+      <created>1770547942507</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1770547942507</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Refactor code and add Javadocs">
+      <option name="closed" value="true" />
+      <created>1770548154211</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1770548154211</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Refactor code and add Javadocs">
+      <option name="closed" value="true" />
+      <created>1770549068793</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1770549068793</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Refactor code and add Javadocs">
+      <option name="closed" value="true" />
+      <created>1770563999927</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1770563999927</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -225,17 +330,21 @@
     <MESSAGE value="Add Repository interface and Dto" />
     <MESSAGE value="Add Service test and app with base scenario" />
     <MESSAGE value="Add Service and repository" />
-    <MESSAGE value="Add InMemoryInventoryRepositoryTest, InventoryConcurrencyTest and BookTest tests" />
     <MESSAGE value="Add remainingByIsbn, remainingByTitle, remainingByAuthor, Readme.md" />
     <MESSAGE value="Add Readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Readme" />
+    <MESSAGE value="Add InMemoryInventoryRepositoryTest, InventoryConcurrencyTest and BookTest tests" />
+    <MESSAGE value="refactor code and add Javadocs" />
+    <MESSAGE value="add README, extra tests, and owner methods to find remaining books" />
+    <MESSAGE value="Add README, extra tests, and owner methods to find remaining books" />
+    <MESSAGE value="Refactor code and add Javadocs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor code and add Javadocs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/library/repository/InventoryRepository.java</url>
-          <line>11</line>
+          <line>21</line>
           <properties class="com.example.library.repository.InventoryRepository" method="findByAuthor">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -244,7 +353,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/library/repository/InventoryRepository.java</url>
-          <line>9</line>
+          <line>16</line>
           <properties class="com.example.library.repository.InventoryRepository" method="addBook">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
